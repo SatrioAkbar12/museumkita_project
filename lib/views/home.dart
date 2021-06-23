@@ -142,6 +142,7 @@ class _HomeState extends State<Home> {
                       kota: museum[index].kota,
                       provinsi: museum[index].provinsi,
                       imgHeader: museum[index].imgHeader,
+                      indeks: index,
                     );
                   })
             ],
@@ -153,6 +154,7 @@ class _HomeState extends State<Home> {
 }
 
 class ListMuseum extends StatelessWidget {
+  final int indeks;
   final String imgHeader;
   final String nama;
   final String kota;
@@ -160,6 +162,7 @@ class ListMuseum extends StatelessWidget {
   // final double rating;
   
   ListMuseum({
+    @required this.indeks,
     @required this.imgHeader,
     @required this.nama,
     @required this.kota,
@@ -178,6 +181,12 @@ class ListMuseum extends StatelessWidget {
       //                 placeName: nama,
       //                 rating: rating,
       //               )));
+        Navigator.push(
+          context, 
+          MaterialPageRoute(
+            builder: (context) => Details(indeks: indeks)
+            )
+          );
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 8),
