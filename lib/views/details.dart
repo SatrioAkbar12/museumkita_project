@@ -4,6 +4,7 @@ import 'package:museumkita/data/data_museum.dart';
 import 'package:museumkita/model/country_model.dart';
 import 'package:flutter/material.dart';
 import 'package:museumkita/model/museum_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Details extends StatefulWidget {
   // final String imgUrl;
@@ -89,19 +90,19 @@ class _DetailsState extends State<Details> {
                                 ),
                               ),
                               Spacer(),
-                              Icon(
-                                Icons.share,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                              SizedBox(
-                                width: 24,
-                              ),
-                              Image.asset(
-                                "assets/heart.png",
-                                height: 24,
-                                width: 24,
-                              )
+                              // Icon(
+                              //   Icons.share,
+                              //   color: Colors.white,
+                              //   size: 24,
+                              // ),
+                              // SizedBox(
+                              //   width: 24,
+                              // ),
+                              // Image.asset(
+                              //   "assets/heart.png",
+                              //   height: 24,
+                              //   width: 24,
+                              // )
                             ],
                           ),
                         ),
@@ -316,7 +317,7 @@ class _DetailsState extends State<Details> {
                       ),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width*0.75,
+                      width: MediaQuery.of(context).size.width*0.70,
                       // child: Text(
                       //   // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
                       //   museum[widget.indeks].persyaratan;
@@ -448,15 +449,28 @@ class _DetailsState extends State<Details> {
                       ),
                     Container(
                       width: MediaQuery.of(context).size.width*0.75,
-                      child: Text(
-                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
-                        museum[widget.indeks].website,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
+                      // child: Text(
+                      //   // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                      //   museum[widget.indeks].website,
+                      //   textAlign: TextAlign.start,
+                      //   style: TextStyle(
+                      //       fontSize: 15,
+                      //       height: 1.5,
+                      //       fontWeight: FontWeight.w600,
+                      //       color: Color(0xff879D95)),
+                      // ),
+                      child: new InkWell(
+                        child: Text(
+                          museum[widget.indeks].website,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
                             fontSize: 15,
                             height: 1.5,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff879D95)),
+                            color: Color.fromRGBO(160, 160, 255, 1)
+                          ),
+                        ),
+                        onTap: () => launch(museum[widget.indeks].website),
                       ),
                     ),
                   ]
