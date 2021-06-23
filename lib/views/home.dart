@@ -91,17 +91,23 @@ class _HomeState extends State<Home> {
               Container(
                 height: 240,
                 child: ListView.builder(
-                    itemCount: country.length,
+                    itemCount: museum.length,
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return CountryListTile(
-                        label: country[index].label,
-                        countryName: country[index].countryName,
-                        noOfTours: country[index].noOfTours,
-                        rating: country[index].rating,
-                        imgUrl: country[index].imgUrl,
+                      // return CountryListTile(
+                      //   label: country[index].label,
+                      //   countryName: country[index].countryName,
+                      //   noOfTours: country[index].noOfTours,
+                      //   rating: country[index].rating,
+                      //   imgUrl: country[index].imgUrl,
+                      // );
+                      return MuseumListTile(
+                        nama: museum[index].nama,
+                        kota: museum[index].kota,
+                        provinsi: museum[index].provinsi,
+                        imgHeader: museum[index].imgHeader
                       );
                     }),
               ),
@@ -370,6 +376,122 @@ class ListMuseum extends StatelessWidget {
 //   }
 // }
 
+class MuseumListTile extends StatelessWidget {
+  final String nama;
+  final String kota;
+  final String provinsi;
+  final String imgHeader;
+
+  MuseumListTile({
+    @required this.nama,
+    @required this.kota,
+    @required this.provinsi,
+    @required this.imgHeader
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 8),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image(
+              image: AssetImage('assets/image-museum/'+imgHeader),
+              height: 220,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Container(
+            height: 200,
+            width: 150,
+            child: Column(
+              children: [
+                Row(
+                  // children: [
+                  //   Container(
+                  //       margin: EdgeInsets.only(left: 8, top: 8),
+                  //       padding:
+                  //           EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                  //       decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(8),
+                  //           color: Colors.black38),
+                  //       child: Text(
+                  //         label ?? "New",
+                  //         style: TextStyle(color: Colors.black),
+                  //       ))
+                  // ],
+                ),
+                Spacer(),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10, left: 8, right: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Text(
+                              nama,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            kota,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13),
+                          )
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10, right: 8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 3, vertical: 7),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3),
+                            color: Colors.white38),
+                        child: Column(
+                          // children: [
+                          //   Text(
+                          //     "4.5",
+                          //     style: TextStyle(
+                          //         color: Colors.black,
+                          //         fontWeight: FontWeight.w600,
+                          //         fontSize: 13),
+                          //   ),
+                          //   SizedBox(
+                          //     height: 2,
+                          //   ),
+                          //   Icon(
+                          //     Icons.star,
+                          //     color: Colors.black,
+                          //     size: 20,
+                          //   )
+                          // ],
+                        ))
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class CountryListTile extends StatelessWidget {
   final String label;
   final String countryName;
@@ -411,10 +533,10 @@ class CountryListTile extends StatelessWidget {
                             EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            color: Colors.white38),
+                            color: Colors.black38),
                         child: Text(
                           label ?? "New",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ))
                   ],
                 ),
@@ -430,7 +552,7 @@ class CountryListTile extends StatelessWidget {
                             child: Text(
                               "Thailand",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
                             ),
@@ -441,7 +563,7 @@ class CountryListTile extends StatelessWidget {
                           Text(
                             "18 Tours",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 13),
                           )
@@ -461,7 +583,7 @@ class CountryListTile extends StatelessWidget {
                             Text(
                               "4.5",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 13),
                             ),
@@ -470,7 +592,7 @@ class CountryListTile extends StatelessWidget {
                             ),
                             Icon(
                               Icons.star,
-                              color: Colors.white,
+                              color: Colors.black,
                               size: 20,
                             )
                           ],
