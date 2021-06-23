@@ -235,15 +235,18 @@ class _DetailsState extends State<Details> {
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Row(
                   children: [
-                    Text(
-                      // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
-                      "Alamat : ",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          fontSize: 15,
-                          height: 1.5,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff879D95)),
+                    Container(
+                      height: 100,
+                      child: Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        "Alamat : ",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width*0.75,
