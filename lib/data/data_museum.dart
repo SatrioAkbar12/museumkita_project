@@ -35,7 +35,7 @@ List<MuseumModel> getMuseum() {
   museumModel.nama = "Museum Batik Kota Pekalongan";
   museumModel.kota = "Pekalongan";
   museumModel.provinsi = "Jawa Tengah";
-  museumModel.imgHeader = "museum-batik-kota-pekalongan.jpg";
+  museumModel.imgHeader = "museum-batik-pekalongan.jpg";
   museumModel.deskripsi = "Museum Batik Pekalongan memiliki luas tanah dan bangunan sebesar 40 meter persegi dan memiliki 1149 koleksi batik, antara lain wayang beber dari kain batik yang berusia ratusan tahun dan alat tenun tradisional atau dikenal sebagai alat tenun bukan mesin.";
   museumModel.alamat = "Jl. Jatayu No.3, Panjang Wetan, Pekalongan Utara, Kota Pekalongan, Jawa Tengah";
   museumModel.htm = "2000-10000";
@@ -63,7 +63,7 @@ List<MuseumModel> getMuseum() {
   museumModel.nama = "Museum Istana Mangkunegaran";
   museumModel.kota = "Surakarta";
   museumModel.provinsi = "Jawa Tengah";
-  museumModel.imgHeader = "museum-istana-magkunegaran.jpg";
+  museumModel.imgHeader = "museum-istana-mangkunegaran.jpg";
   museumModel.deskripsi = "Museum Puro Mangkunegaran berada di dalam kompleks istana Mangkunegaran. Museum ini menyimpan koleksi benda-benda bersejarah milik Puro Mangkunegaran yang dikumpulkan sejak tahun 1926. Museum Puro Mangkunegaran dibuka untuk umum pada tahun 1968 dan dikelola oleh Pariwisata Mangkunegaran.";
   museumModel.alamat = "Jl. Ronggowarsito No.83, Keprabon, Kec. Banjarsari, Kota Surakarta, Jawa Tengah";
   museumModel.htm = "10000-20000";

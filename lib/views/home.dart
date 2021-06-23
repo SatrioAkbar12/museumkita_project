@@ -184,8 +184,8 @@ class ListMuseum extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   bottomLeft: Radius.circular(20)),
-              child: CachedNetworkImage(
-                imageUrl: 'asset/image-museum/'+imgHeader,
+              child: Image(
+                image: AssetImage('assets/image-museum/'+imgHeader),
                 width: 110,
                 height: 90,
                 fit: BoxFit.cover,
