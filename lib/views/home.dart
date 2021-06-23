@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:discounttour/data/data.dart';
-import 'package:discounttour/model/country_model.dart';
-import 'package:discounttour/model/popular_tours_model.dart';
-import 'package:discounttour/views/details.dart';
+import 'package:museumkita/data/data.dart';
+import 'package:museumkita/data/data_museum.dart';
+import 'package:museumkita/model/country_model.dart';
+import 'package:museumkita/model/museum_model.dart';
+import 'package:museumkita/model/popular_tours_model.dart';
+import 'package:museumkita/views/details.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -13,10 +15,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<PopularTourModel> popularTourModels = new List();
   List<CountryModel> country = new List();
+  List<MuseumModel> museum = [];
+
   @override
   void initState() {
     country = getCountrys();
     popularTourModels = getPopularTours();
+    museum = getMuseum();
     super.initState();
   }
 
@@ -40,7 +45,7 @@ class _HomeState extends State<Home> {
               height: 30,
             ),
             Text(
-              "DiscountTour",
+              "Museum Kita",
               style:
                   TextStyle(color: Colors.black54, fontWeight: FontWeight.w600),
             )
@@ -64,7 +69,7 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Find the best tour",
+                "Temukan museum pilihanmu",
                 style: TextStyle(
                     fontSize: 28,
                     color: Colors.black54,
@@ -73,13 +78,13 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 8,
               ),
-              Text(
-                "Country",
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w600),
-              ),
+              // Text(
+              //   "Country",
+              //   style: TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black54,
+              //       fontWeight: FontWeight.w600),
+              // ),
               SizedBox(
                 height: 16,
               ),
@@ -104,7 +109,7 @@ class _HomeState extends State<Home> {
                 height: 8,
               ),
               Text(
-                "Popular Tours",
+                "List Museum",
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black54,
@@ -116,14 +121,21 @@ class _HomeState extends State<Home> {
               ListView.builder(
                   shrinkWrap: true,
                   physics: ClampingScrollPhysics(),
-                  itemCount: popularTourModels.length,
+                  // itemCount: popularTourModels.length,
+                  itemCount: museum.length,
                   itemBuilder: (context, index) {
-                    return PopularTours(
-                      desc: popularTourModels[index].desc,
-                      imgUrl: popularTourModels[index].imgUrl,
-                      title: popularTourModels[index].title,
-                      price: popularTourModels[index].price,
-                      rating: popularTourModels[index].rating,
+                    // return PopularTours(
+                    //   desc: popularTourModels[index].desc,
+                    //   imgUrl: popularTourModels[index].imgUrl,
+                    //   title: popularTourModels[index].title,
+                    //   price: popularTourModels[index].price,
+                    //   rating: popularTourModels[index].rating,
+                    // );
+                    return ListMuseum(
+                      nama: museum[index].nama,
+                      kota: museum[index].kota,
+                      provinsi: museum[index].provinsi,
+                      imgHeader: museum[index].imgHeader,
                     );
                   })
             ],
@@ -134,31 +146,32 @@ class _HomeState extends State<Home> {
   }
 }
 
-class PopularTours extends StatelessWidget {
-  final String imgUrl;
-  final String title;
-  final String desc;
-  final String price;
-  final double rating;
-  PopularTours(
-      {@required this.imgUrl,
-      @required this.rating,
-      @required this.desc,
-      @required this.price,
-      @required this.title});
+class ListMuseum extends StatelessWidget {
+  final String imgHeader;
+  final String nama;
+  final String kota;
+  final String provinsi;
+  // final double rating;
+  
+  ListMuseum({
+    @required this.imgHeader,
+    @required this.nama,
+    @required this.kota,
+    @required this.provinsi
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Details(
-                      imgUrl: imgUrl,
-                      placeName: title,
-                      rating: rating,
-                    )));
+      //   Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //           builder: (context) => Details(
+      //                 imgUrl: header,
+      //                 placeName: nama,
+      //                 rating: rating,
+      //               )));
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 8),
@@ -172,7 +185,7 @@ class PopularTours extends StatelessWidget {
                   topLeft: Radius.circular(20),
                   bottomLeft: Radius.circular(20)),
               child: CachedNetworkImage(
-                imageUrl: imgUrl,
+                imageUrl: imgHeader,
                 width: 110,
                 height: 90,
                 fit: BoxFit.cover,
@@ -184,7 +197,7 @@ class PopularTours extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    nama,
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -194,7 +207,7 @@ class PopularTours extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    desc,
+                    kota+', '+provinsi,
                     style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w400,
@@ -203,47 +216,159 @@ class PopularTours extends StatelessWidget {
                   SizedBox(
                     height: 6,
                   ),
-                  Text(
-                    price,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff4E6059)),
-                  )
+                  // Text(
+                  //   price,
+                  //   style: TextStyle(
+                  //       fontSize: 16,
+                  //       fontWeight: FontWeight.w600,
+                  //       color: Color(0xff4E6059)),
+                  // )
                 ],
               ),
             ),
-            Container(
-                margin: EdgeInsets.only(bottom: 10, right: 8),
-                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    color: Color(0xff139157)),
-                child: Column(
-                  children: [
-                    Text(
-                      "$rating",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 12),
-                    ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.white,
-                      size: 20,
-                    )
-                  ],
-                ))
+          //   Container(
+          //       margin: EdgeInsets.only(bottom: 10, right: 8),
+          //       padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+          //       decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(6),
+          //           color: Color(0xff139157)),
+          //       child: Column(
+          //         children: [
+          //           Text(
+          //             "$rating",
+          //             style: TextStyle(
+          //                 color: Colors.white,
+          //                 fontWeight: FontWeight.w600,
+          //                 fontSize: 12),
+          //           ),
+          //           SizedBox(
+          //             height: 2,
+          //           ),
+          //           Icon(
+          //             Icons.star,
+          //             color: Colors.white,
+          //             size: 20,
+          //           )
+          //         ],
+          //       ))
           ],
         ),
       ),
     );
   }
 }
+
+
+// class PopularTours extends StatelessWidget {
+//   final String imgUrl;
+//   final String title;
+//   final String desc;
+//   final String price;
+//   final double rating;
+//   PopularTours(
+//       {@required this.imgUrl,
+//       @required this.rating,
+//       @required this.desc,
+//       @required this.price,
+//       @required this.title});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: () {
+//         Navigator.push(
+//             context,
+//             MaterialPageRoute(
+//                 builder: (context) => Details(
+//                       imgUrl: imgUrl,
+//                       placeName: title,
+//                       rating: rating,
+//                     )));
+//       },
+//       child: Container(
+//         margin: EdgeInsets.only(bottom: 8),
+//         decoration: BoxDecoration(
+//             color: Color(0xffE9F4F9), borderRadius: BorderRadius.circular(20)),
+//         child: Row(
+//           crossAxisAlignment: CrossAxisAlignment.center,
+//           children: [
+//             ClipRRect(
+//               borderRadius: BorderRadius.only(
+//                   topLeft: Radius.circular(20),
+//                   bottomLeft: Radius.circular(20)),
+//               child: CachedNetworkImage(
+//                 imageUrl: imgUrl,
+//                 width: 110,
+//                 height: 90,
+//                 fit: BoxFit.cover,
+//               ),
+//             ),
+//             Container(
+//               padding: EdgeInsets.symmetric(horizontal: 16),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Text(
+//                     title,
+//                     style: TextStyle(
+//                         fontSize: 16,
+//                         fontWeight: FontWeight.w600,
+//                         color: Color(0xff4E6059)),
+//                   ),
+//                   SizedBox(
+//                     height: 3,
+//                   ),
+//                   Text(
+//                     desc,
+//                     style: TextStyle(
+//                         fontSize: 13,
+//                         fontWeight: FontWeight.w400,
+//                         color: Color(0xff89A097)),
+//                   ),
+//                   SizedBox(
+//                     height: 6,
+//                   ),
+//                   Text(
+//                     price,
+//                     style: TextStyle(
+//                         fontSize: 16,
+//                         fontWeight: FontWeight.w600,
+//                         color: Color(0xff4E6059)),
+//                   )
+//                 ],
+//               ),
+//             ),
+//             Container(
+//                 margin: EdgeInsets.only(bottom: 10, right: 8),
+//                 padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+//                 decoration: BoxDecoration(
+//                     borderRadius: BorderRadius.circular(6),
+//                     color: Color(0xff139157)),
+//                 child: Column(
+//                   children: [
+//                     Text(
+//                       "$rating",
+//                       style: TextStyle(
+//                           color: Colors.white,
+//                           fontWeight: FontWeight.w600,
+//                           fontSize: 12),
+//                     ),
+//                     SizedBox(
+//                       height: 2,
+//                     ),
+//                     Icon(
+//                       Icons.star,
+//                       color: Colors.white,
+//                       size: 20,
+//                     )
+//                   ],
+//                 ))
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class CountryListTile extends StatelessWidget {
   final String label;
