@@ -433,8 +433,10 @@ class MuseumListTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
+                            width: 120,
                             child: Text(
                               nama,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
@@ -444,43 +446,47 @@ class MuseumListTile extends StatelessWidget {
                           SizedBox(
                             height: 3,
                           ),
-                          Text(
-                            kota,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 13),
+                          Container(
+                            width: 120,
+                            child: Text(
+                              kota,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13),
+                            ),
                           )
                         ],
                       ),
                     ),
                     Spacer(),
-                    Container(
-                        margin: EdgeInsets.only(bottom: 10, right: 8),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 3, vertical: 7),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3),
-                            color: Colors.white38),
-                        child: Column(
-                          // children: [
-                          //   Text(
-                          //     "4.5",
-                          //     style: TextStyle(
-                          //         color: Colors.black,
-                          //         fontWeight: FontWeight.w600,
-                          //         fontSize: 13),
-                          //   ),
-                          //   SizedBox(
-                          //     height: 2,
-                          //   ),
-                          //   Icon(
-                          //     Icons.star,
-                          //     color: Colors.black,
-                          //     size: 20,
-                          //   )
-                          // ],
-                        ))
+                    // Container(
+                    //     margin: EdgeInsets.only(bottom: 10, right: 8),
+                    //     padding:
+                    //         EdgeInsets.symmetric(horizontal: 3, vertical: 7),
+                    //     decoration: BoxDecoration(
+                    //         borderRadius: BorderRadius.circular(3),
+                    //         color: Colors.white38),
+                    //     child: Column(
+                    //       // children: [
+                    //       //   Text(
+                    //       //     "4.5",
+                    //       //     style: TextStyle(
+                    //       //         color: Colors.black,
+                    //       //         fontWeight: FontWeight.w600,
+                    //       //         fontSize: 13),
+                    //       //   ),
+                    //       //   SizedBox(
+                    //       //     height: 2,
+                    //       //   ),
+                    //       //   Icon(
+                    //       //     Icons.star,
+                    //       //     color: Colors.black,
+                    //       //     size: 20,
+                    //       //   )
+                    //       // ],
+                    //     ))
                   ],
                 )
               ],
