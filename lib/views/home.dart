@@ -31,10 +31,13 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         leading: Container(
           padding: EdgeInsets.all(7),
-          child: Image.asset(
-            "assets/menu.png",
-            height: 20,
-            width: 20,
+          child: TextButton(
+            onPressed: () => Scaffold.of(context).openDrawer(),
+            child: Image.asset(
+              "assets/menu.png",
+              height: 20,
+              width: 20,
+            ),
           ),
         ),
         title: Row(
@@ -61,6 +64,49 @@ class _HomeState extends State<Home> {
           )
         ],
         elevation: 0.0,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+              child: Text(
+                'Museum Kita'
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Menu Utama",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xff4E6059)
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) => Home()
+                  )
+                );
+              },
+            ),
+            ListTile(
+                title: Text(
+                  "Credit",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff4E6059)
+                  ),
+                ),
+              )
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
