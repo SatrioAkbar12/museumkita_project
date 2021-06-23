@@ -107,7 +107,8 @@ class _HomeState extends State<Home> {
                         nama: museum[index].nama,
                         kota: museum[index].kota,
                         provinsi: museum[index].provinsi,
-                        imgHeader: museum[index].imgHeader
+                        imgHeader: museum[index].imgHeader,
+                        indeks: index,
                       );
                     }),
               ),
@@ -390,123 +391,135 @@ class MuseumListTile extends StatelessWidget {
   final String kota;
   final String provinsi;
   final String imgHeader;
+  final int indeks;
 
   MuseumListTile({
     @required this.nama,
     @required this.kota,
     @required this.provinsi,
-    @required this.imgHeader
+    @required this.imgHeader,
+    @required this.indeks
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 8),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image(
-              image: AssetImage('assets/image-museum/'+imgHeader),
+    return GestureDetector(
+      onTap: () {
+         Navigator.push(
+          context, 
+          MaterialPageRoute(
+            builder: (context) => Details(indeks: indeks)
+            )
+          );
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 8),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image(
+                image: AssetImage('assets/image-museum/'+imgHeader),
+                height: 220,
+                width: 150,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Color.fromRGBO(0, 0, 0, 0.5),
+              ),
               height: 220,
               width: 150,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Color.fromRGBO(0, 0, 0, 0.5),
-            ),
-            height: 220,
-            width: 150,
-            child: Column(
-              children: [
-                Row(
-                  // children: [
-                  //   Container(
-                  //       margin: EdgeInsets.only(left: 8, top: 8),
-                  //       padding:
-                  //           EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                  //       decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(8),
-                  //           color: Colors.black38),
-                  //       child: Text(
-                  //         label ?? "New",
-                  //         style: TextStyle(color: Colors.white),
-                  //       ))
-                  // ],
-                ),
-                Spacer(),
-                Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 10, left: 8, right: 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 120,
-                            child: Text(
-                              nama,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
+              child: Column(
+                children: [
+                  Row(
+                    // children: [
+                    //   Container(
+                    //       margin: EdgeInsets.only(left: 8, top: 8),
+                    //       padding:
+                    //           EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                    //       decoration: BoxDecoration(
+                    //           borderRadius: BorderRadius.circular(8),
+                    //           color: Colors.black38),
+                    //       child: Text(
+                    //         label ?? "New",
+                    //         style: TextStyle(color: Colors.white),
+                    //       ))
+                    // ],
+                  ),
+                  Spacer(),
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 10, left: 8, right: 8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 120,
+                              child: Text(
+                                nama,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Container(
-                            width: 120,
-                            child: Text(
-                              kota,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 13),
+                            SizedBox(
+                              height: 3,
                             ),
-                          )
-                        ],
+                            Container(
+                              width: 120,
+                              child: Text(
+                                kota,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    // Spacer(),
-                    // Container(
-                    //     margin: EdgeInsets.only(bottom: 10, right: 8),
-                    //     padding:
-                    //         EdgeInsets.symmetric(horizontal: 3, vertical: 7),
-                    //     decoration: BoxDecoration(
-                    //         borderRadius: BorderRadius.circular(3),
-                    //         color: Colors.white38),
-                    //     child: Column(
-                    //       // children: [
-                    //       //   Text(
-                    //       //     "4.5",
-                    //       //     style: TextStyle(
-                    //       //         color: Colors.white,
-                    //       //         fontWeight: FontWeight.w600,
-                    //       //         fontSize: 13),
-                    //       //   ),
-                    //       //   SizedBox(
-                    //       //     height: 2,
-                    //       //   ),
-                    //       //   Icon(
-                    //       //     Icons.star,
-                    //       //     color: Colors.white,
-                    //       //     size: 20,
-                    //       //   )
-                    //       // ],
-                    //     ))
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+                      // Spacer(),
+                      // Container(
+                      //     margin: EdgeInsets.only(bottom: 10, right: 8),
+                      //     padding:
+                      //         EdgeInsets.symmetric(horizontal: 3, vertical: 7),
+                      //     decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(3),
+                      //         color: Colors.white38),
+                      //     child: Column(
+                      //       // children: [
+                      //       //   Text(
+                      //       //     "4.5",
+                      //       //     style: TextStyle(
+                      //       //         color: Colors.white,
+                      //       //         fontWeight: FontWeight.w600,
+                      //       //         fontSize: 13),
+                      //       //   ),
+                      //       //   SizedBox(
+                      //       //     height: 2,
+                      //       //   ),
+                      //       //   Icon(
+                      //       //     Icons.star,
+                      //       //     color: Colors.white,
+                      //       //     size: 20,
+                      //       //   )
+                      //       // ],
+                      //     ))
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      )
     );
   }
 }

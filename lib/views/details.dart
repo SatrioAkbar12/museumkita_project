@@ -35,7 +35,7 @@ class _DetailsState extends State<Details> {
   List<CountryModel> country = new List();
   List<MuseumModel> museum = [];
 
-  // final int indeks = this.indeks;
+  String bullet = "\u2022";
 
   @override
   void initState() {
@@ -250,7 +250,7 @@ class _DetailsState extends State<Details> {
                       width: MediaQuery.of(context).size.width*0.75,
                       child: Text(
                         // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
-                        museum[widget.indeks].alamat + 'asklhdksajhdkjhsakjdhkjsaghdjkhaskjhdkjashdjkhsakjdhkjsah',
+                        museum[widget.indeks].alamat,
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontSize: 15,
@@ -261,7 +261,212 @@ class _DetailsState extends State<Details> {
                     ),
                   ],
                 ),
-              )
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        "Harga Tiket Masuk : ",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.50,
+                      child: Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        "Rp. "+museum[widget.indeks].htm,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    ),
+                  ]
+                )
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                      "Persyaratan : ",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontSize: 15,
+                          height: 1.5,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff879D95)
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.75,
+                      // child: Text(
+                      //   // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                      //   museum[widget.indeks].persyaratan;
+                      //   textAlign: TextAlign.start,
+                      //   style: TextStyle(
+                      //       fontSize: 15,
+                      //       height: 1.5,
+                      //       fontWeight: FontWeight.w600,
+                      //       color: Color(0xff879D95)),
+                      // ),
+                      child:
+                        if (museum[widget.indeks].persyaratan.isEmpty) {
+                          return Container(
+                            child: Text(
+                              "Tidak ada persyaratan",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 15,
+                                height: 1.5,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff879D95)
+                              ),
+                            )
+                          );
+                        } else {
+                          ListView.builder(
+                            itemCount: museum[widget.indeks].persyaratan.length,
+                            itemBuilder: (context, index){
+                              return Container(
+                                child: Text(
+                                  bullet+" "+museum[widget.indeks].persyaratan[index],
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    height: 1.5,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff879D95)
+                                  ),
+                                )
+                              );
+                            },
+                          )
+                        }
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        "Nomor telepon : ",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.60,
+                      child: Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        museum[widget.indeks].noTelepon,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    ),
+                  ]
+                )
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        "Email : ",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.75,
+                      child: Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        museum[widget.indeks].email,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    ),
+                  ]
+                )
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        "Website : ",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.75,
+                      child: Text(
+                        // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                        museum[widget.indeks].website,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)),
+                      ),
+                    ),
+                  ]
+                )
+              ),
+
               // Container(
               //   height: 240,
               //   child: ListView.builder(
