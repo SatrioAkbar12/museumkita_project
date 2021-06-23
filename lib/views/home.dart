@@ -418,7 +418,7 @@ class MuseumListTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               color: Color.fromRGBO(0, 0, 0, 0.5),
             ),
-            height: 200,
+            height: 220,
             width: 150,
             child: Column(
               children: [
