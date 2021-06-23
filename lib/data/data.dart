@@ -1,5 +1,5 @@
-import 'package:discounttour/model/country_model.dart';
-import 'package:discounttour/model/popular_tours_model.dart';
+import 'package:museumkita/model/country_model.dart';
+import 'package:museumkita/model/popular_tours_model.dart';
 
 List<CountryModel> getCountrys() {
   List<CountryModel> country = new List();
