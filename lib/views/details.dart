@@ -327,11 +327,24 @@ class _DetailsState extends State<Details> {
                       //       fontWeight: FontWeight.w600,
                       //       color: Color(0xff879D95)),
                       // ),
-                      child:
-                        if (museum[widget.indeks].persyaratan.isEmpty) {
+                      child: museum[widget.indeks].persyaratan.isEmpty ? 
+                      Container(
+                        child: Text(
+                          "Tidak ada persyaratan",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            fontSize: 15,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff879D95)
+                          ),
+                        )
+                      ) : ListView.builder(
+                        itemCount: museum[widget.indeks].persyaratan.length,
+                        itemBuilder: (context, index){
                           return Container(
                             child: Text(
-                              "Tidak ada persyaratan",
+                              bullet+" "+museum[widget.indeks].persyaratan[index],
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 15,
@@ -341,25 +354,8 @@ class _DetailsState extends State<Details> {
                               ),
                             )
                           );
-                        } else {
-                          ListView.builder(
-                            itemCount: museum[widget.indeks].persyaratan.length,
-                            itemBuilder: (context, index){
-                              return Container(
-                                child: Text(
-                                  bullet+" "+museum[widget.indeks].persyaratan[index],
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff879D95)
-                                  ),
-                                )
-                              );
-                            },
-                          )
-                        }
+                        },
+                      )
                     ),
                   ],
                 ),
