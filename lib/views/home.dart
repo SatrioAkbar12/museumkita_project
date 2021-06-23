@@ -29,14 +29,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Container(
-          padding: EdgeInsets.all(7),
-          child: TextButton(
-            onPressed: () => Scaffold.of(context).openDrawer(),
-            child: Image.asset(
-              "assets/menu.png",
-              height: 20,
-              width: 20,
+        leading: Builder(
+          builder: (context) => Container(
+            padding: EdgeInsets.all(7),
+            child: GestureDetector(
+              onTap: () => Scaffold.of(context).openDrawer(),
+              child: Image.asset(
+                "assets/menu.png",
+                height: 20,
+                width: 20,
+              ),
             ),
           ),
         ),
