@@ -414,6 +414,10 @@ class MuseumListTile extends StatelessWidget {
             ),
           ),
           Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Color.fromRGBO(0, 0, 0, 0.5),
+            ),
             height: 200,
             width: 150,
             child: Column(
@@ -429,7 +433,7 @@ class MuseumListTile extends StatelessWidget {
                   //           color: Colors.black38),
                   //       child: Text(
                   //         label ?? "New",
-                  //         style: TextStyle(color: Colors.black),
+                  //         style: TextStyle(color: Colors.white),
                   //       ))
                   // ],
                 ),
@@ -447,7 +451,7 @@ class MuseumListTile extends StatelessWidget {
                               nama,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
                             ),
@@ -461,7 +465,7 @@ class MuseumListTile extends StatelessWidget {
                               kota,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 13),
                             ),
@@ -469,7 +473,7 @@ class MuseumListTile extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Spacer(),
+                    // Spacer(),
                     // Container(
                     //     margin: EdgeInsets.only(bottom: 10, right: 8),
                     //     padding:
@@ -482,7 +486,7 @@ class MuseumListTile extends StatelessWidget {
                     //       //   Text(
                     //       //     "4.5",
                     //       //     style: TextStyle(
-                    //       //         color: Colors.black,
+                    //       //         color: Colors.white,
                     //       //         fontWeight: FontWeight.w600,
                     //       //         fontSize: 13),
                     //       //   ),
@@ -491,7 +495,7 @@ class MuseumListTile extends StatelessWidget {
                     //       //   ),
                     //       //   Icon(
                     //       //     Icons.star,
-                    //       //     color: Colors.black,
+                    //       //     color: Colors.white,
                     //       //     size: 20,
                     //       //   )
                     //       // ],
@@ -551,7 +555,7 @@ class CountryListTile extends StatelessWidget {
                             color: Colors.black38),
                         child: Text(
                           label ?? "New",
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                         ))
                   ],
                 ),
@@ -567,7 +571,7 @@ class CountryListTile extends StatelessWidget {
                             child: Text(
                               "Thailand",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
                             ),
@@ -578,7 +582,7 @@ class CountryListTile extends StatelessWidget {
                           Text(
                             "18 Tours",
                             style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 13),
                           )
@@ -598,7 +602,7 @@ class CountryListTile extends StatelessWidget {
                             Text(
                               "4.5",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 13),
                             ),
@@ -607,7 +611,7 @@ class CountryListTile extends StatelessWidget {
                             ),
                             Icon(
                               Icons.star,
-                              color: Colors.black,
+                              color: Colors.white,
                               size: 20,
                             )
                           ],
