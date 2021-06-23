@@ -234,10 +234,9 @@ class _DetailsState extends State<Details> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 100,
-                      child: Text(
+                    Text(
                         // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
                         "Alamat : ",
                         textAlign: TextAlign.start,
@@ -247,12 +246,11 @@ class _DetailsState extends State<Details> {
                             fontWeight: FontWeight.w600,
                             color: Color(0xff879D95)),
                       ),
-                    ),
                     Container(
                       width: MediaQuery.of(context).size.width*0.75,
                       child: Text(
                         // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
-                        museum[widget.indeks].alamat,
+                        museum[widget.indeks].alamat + 'asklhdksajhdkjhsakjdhkjsaghdjkhaskjhdkjashdjkhsakjdhkjsah',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontSize: 15,
